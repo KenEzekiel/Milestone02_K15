@@ -8,5 +8,6 @@ Anggota dan Pembagian Tugas :
 4. Implementasi menggunakan React : Farizki Kurniawan (16521030) & Kenneth Ezekiel Suprantoni (16521040) & Michael Utama (16521163) & Syafiq Ziyadul Arifin (16521432)
 5. Devops + Logic : Kenneth Ezekiel Suprantoni (16521040)
 
-Penjelasan Solusi\
+Penjelasan Solusi
 
+Solusi yang kami ajukan untuk jasa transportasi angkot adalah dengan membuat sistem yang lebih teratur dalam bentuk sebuah website. Website ini akan menunjukkan fitur seperti peta yang akan memberitahukan lokasi pengguna dan angkutan, jadwal angkutan, dan jalur angkot. Ketika user memasuki website dan masuk ke halaman depan web, user akan dianjurkan untuk mengetik destinasi tujuan. Dari situ, website akan loading dan mencari angkot tertentu dengan jalur yang akan dilalui sesuai dengan tujuan destinasi user. 
