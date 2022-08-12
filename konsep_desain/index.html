@@ -5,9 +5,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <link rel="stylesheet" href="styles.css">
         <!-- temporary stylesheet, new stylesheet needed -->
-        <style>
+        <!-- <style>
             body {background-color: #BDF1F9;}
             .home_widgets, nav {
                     background-color: #CFC4F2;
@@ -21,19 +21,26 @@
                 width: 8%;
                 height: 8%;
             }
-        </style>
+        </style> -->
     </head>
     <body>
         <header>
-            <h1>Pagi, User!</h1>
-            <p>Mau ke mana hari ini?</p>
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" alt="User Profile Picture"></a>
-            <input type="file" id="file">
-            <!-- search bar needed -->
+            <div class="top">
+                <div class="top_text">
+                    <h1>Pagi, User!</h1>
+                    <p>Mau ke mana hari ini?</p>
+                </div>
+                <div class="top_image">
+                    <a href="#"><img class="user" src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" alt="User Profile Picture"></a>
+                    <!-- <input type="file" id="file"> -->
+                    <!-- search bar needed -->
+                </div>
+            </div>
             <br>
-            <p>
-                <img src="https://cdn-icons-png.flaticon.com/512/875/875623.png" alt="search">Ketik destinasimu di sini
-            </p>
+            <div class="search">
+                <input id="destInput" type="text" name="destInput" placeholder="Ketik destinasimu disini"/>
+            </div>
+            
         </header>
 
         <br>
@@ -43,7 +50,8 @@
                 <!-- placeholder weather text -->
                 <p>
                     <img src="https://cdn-icons-png.flaticon.com/512/3781/3781624.png" alt="Weather Icon">
-                    <strong>27C Bandung, Jawa Barat</strong>
+                    <strong id="temp_text">27&#8451;</strong>
+                    <strong id="bandung_text">Bandung, Jawa Barat</strong>
                 </p>
             </section>
 
