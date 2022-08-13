@@ -1,4 +1,5 @@
-body {background-color: #BDF1F9;}
+/* body {background-color: #BDF1F9;} */
+body {background-color: white;}
 .home_widgets, nav {
     background-color: white;
 }
@@ -119,6 +120,7 @@ body {background-color: #BDF1F9;}
 }
 
 footer nav {
+    background: rgba(216,229,255,255);
     border: none;
     box-shadow: 3px 4px 2px #aaaaaa;
     border-radius: 1.625rem;
@@ -132,6 +134,11 @@ footer nav img {
     display: inline-block;
     width: 5%;
     height: 5%;
+}
+
+.middle{
+    box-shadow: 3px 4px 2px #aaaaaa;
+    border-radius: 50%;
 }
 
 .middle {
