@@ -5,32 +5,28 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!-- temporary stylesheet, new stylesheet needed -->
-        <style>
-            body {background-color: #BDF1F9;}
-            #container_map {
-                    background-color: #CFC4F2;
-                }
-            /*    
-            footer nav img {
-                width: 5%;
-                height: 5%;
-            }
-
-            .middle {
-                width: 8%;
-                height: 8%;
-            } */
-        </style>
+        <link rel="stylesheet" href="../css/maps.css">
+        <link rel="stylesheet" href='../background.css'>
     </head>
     <body>
+        <!-- background -->
+        <div class="background">
+            <div class="circle1"></div>  <!-- upper left-->
+            <div class="circle2"></div>  <!-- bottom left-->
+            <div class="circle3"></div>  <!-- upper right-->
+            <div class="circle4"></div>  <!-- bottom right-->
+        </div>
+
         <!-- peta -->
         <div id="container_map">
-            <a href="..\index.html" class="button_return"><img href="#" alt="Return"></a>
+            <div>
+                <a href="../index.html" id="button_return">
+                    <img src="../assets/left-arrow.png" alt="return">
+                </a>
+            </div>
             <div id="map">
                 <!-- map placeholder -->
-                <img src="#" alt="map placeholder">
+                <img src="../assets/Map Image 2.png" alt="map placeholder">
             </div>
         </div>
 
@@ -38,10 +34,10 @@
 
         <!-- search rute angkutan -->
         <div>
-            <div class="location_search" id="start">
+            <div class="search" id="start">
                 <input type="text" placeholder="Lokasi Awal">
             </div>
-            <div class="location_search" id="finish">
+            <div class="search" id="finish">
                 <input type="text" placeholder="Destinasi">
             </div>
         </div>
@@ -50,16 +46,18 @@
         <!-- pop up detail angkutan -->
         <div>
             <div class="bus_details" id="est_time">
-                <img src="#" id="icon_time">
-                <p><strong>Estimasi Kedatangan</strong></p>
-                <p>x min (Y km)</p>
-                <!-- placeholder text-->
+                <div class="details_text">
+                    <p><strong>Estimasi Kedatangan</strong></p>
+                    <p>x min (Y km)</p>
+                    <!-- placeholder text-->
+                </div>
             </div>
             <div class="bus_details" id="route_code">
-                <img src="#" id="icon_code">
-                <p><strong>Kode Angkutan</strong></p>
-                <p>Caringin-SDS-2341</p>
-                <!-- placeholder text-->
+                <div class="details_text">
+                    <p><strong>Kode Angkutan</strong></p>
+                    <p>Caringin-Sadang Serang - 2341</p>
+                    <!-- placeholder text-->
+                </div>
             </div>
         </div>
     </body>
