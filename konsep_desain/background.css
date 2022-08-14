@@ -1,51 +1,87 @@
+/* smaller display */
+/* upper left */
 .circle1 {
     width: 60%;
-    height: 75%;
-    position: absolute;
+    height: 40%;
+    position: fixed;
     z-index: -1;
     top: -20%;
-    left: -15%;
+    left: -25%;
     opacity: 90%;
     border-radius: 50%;
     background: rgba(171,181,224,255);
     background: linear-gradient(135deg, rgba(171,181,224,255) 50%, rgba(255,255,255,255) 80%);
 }
 
+/* bottom left */
 .circle2 {
-    width: 48%;
-    height: 75%;
-    position: absolute;
+    width: 60%;
+    height: 36%;
+    position: fixed;
     z-index: -1;
-    top: 70%;
+    top: 80%;
     left: -15%;
-    opacity: 90%;
+    opacity: 80%;
     border-radius: 50%;
     background: rgba(171,181,224,255);
     background: linear-gradient(0, rgba(147,162,216,255) 0%, rgba(255,255,255,255) 80%);
 }
 
+
+/* upper right */
 .circle3 {
-    width: 20%;
-    height: 40%;
-    position: absolute;
+    width: 40%;
+    height: 20%;
+    position: fixed;
     z-index: -1;
-    top: 30%;
-    right: -5%;
+    top: 10%;
+    right: -20%;
     opacity: 90%;
     border-radius: 50%;
     background: rgba(171,181,224,255);
     background: linear-gradient(-45deg, rgba(171,181,224,255) 50%, rgba(255,255,255,255) 80%);
 }
 
+/* bottom right */
 .circle4 {
-    width: 20%;
-    height: 40%;
-    position: absolute;
+    width: 40%;
+    height: 20%;
+    position: fixed;
     z-index: -1;
-    bottom: -60%;
-    right: -5%;
+    bottom: -10%;
+    right: -15%;
     opacity: 90%;
     border-radius: 50%;
     background: rgba(171,181,224,255);
     background: linear-gradient(135deg, rgba(147,162,216,255) 0%, rgba(255,255,255,255) 80%);
+}
+
+
+/* rule for wider screen */
+@media screen and (min-width:768px) {
+    .circle1 {
+        width: 60%;
+        height: 75%;
+        top:-30%;
+    }
+
+    .circle2 {
+        width: 48%;
+        height: 75%;
+        top: 70%;
+    }
+
+    .circle3 {
+        width: 20%;
+        height: 40%;
+        right: -10%;
+    }
+
+    .circle4 {
+        width: 20%;
+        height: 40%;
+        right: -5%;
+        bottom: -25%;
+    }
+
 }
