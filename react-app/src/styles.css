@@ -79,7 +79,7 @@ body {background-color: white;}
     font-family: 'Segoe UI', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     position: absolute;
     font-weight: 400;
-    font-size: 80px;
+    font-size: 70px;
     background: -webkit-linear-gradient(rgb(157, 241, 152), rgb(78, 139, 231));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -89,10 +89,13 @@ body {background-color: white;}
 #weather strong:nth-of-type(2) {
     font-family: 'Segoe UI', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
-    font-size: 28px;
+    font-size: 25px;
     background: -webkit-linear-gradient(rgb(157, 241, 152), rgb(78, 139, 231));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+    left: 10px;
+    top: -5px;
     margin-top: 20px;
     float: right;
     width: 180px;
@@ -101,8 +104,10 @@ body {background-color: white;}
 #line {
     background: -webkit-linear-gradient(left, rgb(157, 241, 152), rgb(78, 139, 231));
     border: none;
-    border-radius: 1.625rem;
-    position: absolute;
+    border-radius: 2rem;
+    position: relative;
+    top: -1px;
+    left: -12px;
     width: 320px;
     height: 8px;
     margin-left: 150px;
@@ -144,4 +149,24 @@ footer nav img {
 .middle {
     width: 8%;
     height: 8%;
+}
+
+.left1 {
+    position: relative;
+    left: -150px;
+}
+
+.left2 {
+    position: relative;
+    left: -170px;
+}
+
+.right1 {
+    position: relative;
+    left: 150px;
+}
+
+.right2 {
+    position: relative;
+    left: 160px;
 }

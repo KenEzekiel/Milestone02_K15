@@ -48,11 +48,11 @@ function App() {
 
         <footer>
             <nav>
-                <img src="assets/setting.png" alt="Settings"/>
-                <img src="https://cdn-icons-png.flaticon.com/512/189/189665.png" alt="Help"/>
-                <img class="middle" src="assets/scan.png" alt="Scan"/>
-                <img src="https://cdn-icons-png.flaticon.com/512/323/323372.png" alt="Language-ID"/>
-                <img src="https://cdn-icons-png.flaticon.com/512/323/323329.png" alt="Language-EN"/>
+                <img class="left2" src="https://cdn-icons.flaticon.com/png/512/5249/premium/5249375.png?token=exp=1660456648~hmac=91d618064f8704e1b363b28844284627" alt="Settings"/>
+                <img class="left1" src="https://cdn-icons-png.flaticon.com/512/189/189665.png" alt="Help"/>
+                <img class="middle" src="https://cdn-icons.flaticon.com/png/512/4480/premium/4480405.png?token=exp=1660456745~hmac=62c88fc5cd2fbfcf795bab27a0077177" alt="Scan"/>
+                <img class="right1" src="https://cdn-icons-png.flaticon.com/512/323/323372.png" alt="Language-ID"/>
+                <img class="right2" src="https://cdn-icons-png.flaticon.com/512/323/323329.png" alt="Language-EN"/>
             </nav>
         </footer>
     </div>
