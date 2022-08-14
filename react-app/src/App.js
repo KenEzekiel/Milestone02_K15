@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './styles.css';
 import './background.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import settingLogo from './assets/setting.png'
 import scanLogo from './assets/scan.png'
@@ -11,6 +11,16 @@ import {useState} from 'react';
 
 function App() {
     const [lang, setLang] = useState('id');
+    const [dest, setDest] = useState('');
+
+    function keyDown(event) {
+        console.log(event.key + ' pressed');
+        if(event.key === 'Enter') {
+            //history.push('/maps', {dest: dest});
+            window.location.href = '/maps/:' + dest;
+
+        }
+    }
 
   return (
     <div className="App">
@@ -32,8 +42,12 @@ function App() {
             </div>
             <br />
             <div class="search">
-                <input id="destInput" type="text" name="destInput" 
-                placeholder={lang=='id'?"Ketik destinasimu disini":"Type your destination here"}
+                <input 
+                    id="destInput" type="text" name="destInput" 
+                    placeholder={lang=='id'?"Ketik destinasimu disini":"Type your destination here"}
+                    value={dest}
+                    onInput={e => setDest(e.target.value)}
+                    onKeyDown={e => keyDown(e)}
                 />
             </div>
         </header>
@@ -86,7 +100,9 @@ function Main() {
         <BrowserRouter>
             <Routes>
                 <Route exact path='/' element={App()} />
-                <Route exact path='/maps' element={<Maps />} />
+                <Route path='maps' element={<Maps />}>
+                    <Route path=':dest' element={<Maps />} />
+                </Route>
             </Routes>
         </BrowserRouter>
         
