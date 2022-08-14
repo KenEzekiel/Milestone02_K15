@@ -1,0 +1,147 @@
+/* body {background-color: #BDF1F9;} */
+body {background-color: white;}
+.home_widgets, nav {
+    background-color: white;
+}
+
+.top {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.top_text {
+    display: inline-block;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top_image {
+    display: inline-block;
+}
+
+.user {
+    margin-left: 200px;
+    width: 120px;
+}
+
+.search input {
+    background: url(https://cdn-icons-png.flaticon.com/512/875/875623.png) no-repeat scroll;
+    background-color: white;
+    background-size: 25px;
+    background-position: 3%;
+    box-shadow: 3px 4px 2px #aaaaaa;
+    margin-top: 10px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#destInput {
+    height: 2rem;
+    padding-left: 50px;
+    border: none;
+    border-radius: 1.625rem;
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#weather, #pedulilindungi {
+    position: relative;
+    border: none;
+    border-radius: 1.625rem;
+    width: 500px;
+    box-shadow: 3px 4px 2px #aaaaaa;
+    padding: 25px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#weather {
+    height: 150px;
+}
+
+#weather img {
+    width: 120px;
+    padding-left: 15px;
+    margin-right: -15px;
+}
+
+#weather strong:nth-of-type(1) {
+    font-family: 'Segoe UI', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    font-weight: 400;
+    font-size: 80px;
+    background: -webkit-linear-gradient(rgb(157, 241, 152), rgb(78, 139, 231));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 30px;
+}
+
+#weather strong:nth-of-type(2) {
+    font-family: 'Segoe UI', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    background: -webkit-linear-gradient(rgb(157, 241, 152), rgb(78, 139, 231));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 20px;
+    float: right;
+    width: 180px;
+}
+
+#line {
+    background: -webkit-linear-gradient(left, rgb(157, 241, 152), rgb(78, 139, 231));
+    border: none;
+    border-radius: 1.625rem;
+    position: absolute;
+    width: 320px;
+    height: 8px;
+    margin-left: 150px;
+    bottom: 40px;
+}
+
+#pedulilindungi img {
+    width: 50%;
+}
+
+#pedulilindungi p {
+    font-family: 'Segoe UI', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+footer nav {
+    background: rgba(216,229,255,255);
+    border: none;
+    box-shadow: 3px 4px 2px #aaaaaa;
+    border-radius: 1.625rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 550px;
+}
+
+footer nav img {
+    display: inline-block;
+    width: 5%;
+    height: 5%;
+}
+
+.middle{
+    box-shadow: 3px 4px 2px #aaaaaa;
+    border-radius: 10%;
+}
+
+.middle {
+    width: 8%;
+    height: 8%;
+}
