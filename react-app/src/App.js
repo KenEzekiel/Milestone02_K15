@@ -1,6 +1,8 @@
 //import logo from './logo.svg';
 import './styles.css';
 import './background.css';
+
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import settingLogo from './assets/setting.png'
@@ -33,8 +35,8 @@ function App() {
                 </div>
                 <div className="top">
                     <div className="top_text">
-                        <h1>{lang == 'id' ? 'Pagi, User!' : 'Morning, User!'}</h1>
-                        <p>{lang == 'id' ? 'Mau ke mana hari ini?' : 'Where do you want to go today?'}</p>
+                        <h1>{lang === 'id' ? 'Pagi, User!' : 'Morning, User!'}</h1>
+                        <p>{lang === 'id' ? 'Mau ke mana hari ini?' : 'Where do you want to go today?'}</p>
                     </div>
                     <div className="top_image">
                         <img className="user" src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" alt='user' />
@@ -46,7 +48,7 @@ function App() {
                 <div className="search">
                     <input
                         id="destInput" type="text" name="destInput"
-                        placeholder={lang == 'id' ? "Ketik destinasimu disini" : "Type your destination here"}
+                        placeholder={lang === 'id' ? "Ketik destinasimu disini" : "Type your destination here"}
                         value={dest}
                         onInput={e => setDest(e.target.value)}
                         onKeyDown={e => keyDown(e)}
@@ -67,7 +69,7 @@ function App() {
                 </section>
                 <section id="pedulilindungi" className="home_widgets">
                     <img src="https://www.pedulilindungi.id/assets/logo-with-text.svg" alt="PeduliLindungi" />
-                    <p>{lang == 'id'
+                    <p>{lang === 'id'
                         ? 'Terintegrasi dengan PeduliLindungi, kami berharap transportasi publik dapat terhindar dari paparan Covid19'
                         : 'Integrated with PeduliLindungi, we wish for public transportation to be Covid19-free'}</p>
                 </section>

@@ -1,4 +1,6 @@
 import './maps.css'
+
+import React from 'react';
 import { Link, useParams } from 'react-router-dom'
 
 import leftArrow from "../assets/left-arrow.png"
@@ -13,10 +15,10 @@ function Maps() {
     return (
         <div className='App'>
             <div class="background">
-                <div class="circle1"></div>  
-                <div class="circle2"></div> 
-                <div class="circle3"></div> 
-                <div class="circle4"></div> 
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
             </div>
 
             <div id="container_map">
@@ -37,8 +39,8 @@ function Maps() {
                     <input type="text" placeholder="Lokasi Awal" />
                 </div>
                 <div class="search" id="finish">
-                    <input type="text" 
-                        placeholder="Destinasi" 
+                    <input type="text"
+                        placeholder="Destinasi"
                         value={dest ? dest : ''}
                     />
                 </div>
