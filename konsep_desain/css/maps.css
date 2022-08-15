@@ -1,0 +1,107 @@
+/* body {background-color: #BDF1F9;} */
+body {
+    background-color: white;
+}
+
+.search input {
+    background: url(../assets/location.png) no-repeat scroll;
+    background-color: white;
+    background-size: 25px;
+    background-position: 3%;
+    box-shadow: 3px 4px 2px #aaaaaa;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /* text and search box styling */
+    height: 2rem;
+    padding-left: 50px;
+    border: none;
+    border-radius: 1.625rem;
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.bus_details {
+    box-shadow: 3px 4px 2px #aaa;
+    margin: 10px auto 20px auto;
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border:none;
+    border-radius: 1.625rem;
+}
+
+.details_text{
+    padding-left: 100px;
+    border: none;
+    border-radius: 1.625rem;
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#est_time{
+    background: url(../assets/stopwatch.png) no-repeat scroll;
+    background-color: #fff;
+}
+
+#route_code{
+    background: url(../assets/qr.png) no-repeat scroll;
+    background-color: #fff;
+}
+
+#est_time, #route_code{
+    background-size: 50px;
+    background-position: 5%;
+}
+
+
+
+#container_map {
+    position: relative;
+    border: none;
+    border-radius: 1.625rem;
+    width: 500px;
+    background-color: rgba(255,255,255,50%);
+    box-shadow: 3px 4px 2px #aaaaaa;
+    padding: 25px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    flex-direction: column;
+}
+
+#map{
+    align-self: center;
+    align-content: center ;
+}
+
+
+#button_return{
+    display: flex;
+    margin-bottom: -20px;
+    background-color: white;
+    border-radius:25px;
+    width:40px;
+    height:40px;
+    box-shadow: 1px 3px 2px #aaaaaa;
+
+}
+
+#button_return img{
+    width:25px;
+    height:25px;
+    margin:auto;
+}
+
+
+
+
+
