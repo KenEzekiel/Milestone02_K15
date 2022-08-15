@@ -214,9 +214,25 @@ footer nav img {
 .right1 {
     position: relative;
     left: 150px;
+    transition: ease-out 0.2s;
+}
+
+.right1:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    position: relative;
+    left: 150px;
 }
 
 .right2 {
+    position: relative;
+    left: 160px;
+    transition: ease-out 0.2s;
+}
+
+.right2:hover {
+    opacity: 0.5;
+    cursor: pointer;
     position: relative;
     left: 160px;
 }
