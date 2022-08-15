@@ -12,22 +12,17 @@ import "@tomtom-international/web-sdk-maps/dist/maps.css";
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 
 function Maps() {
-    let { dest } = useParams();
-    console.log(useParams());
+    let { dest, lat, lon } = useParams();
 
     const onChange = (event) => {
 
     }
 
-    if (dest) {
-        dest = dest.slice(1);
-    }
-
     const MAX_ZOOM = 22;
     const mapElement = useRef();
-    const [mapLongitude, setMapLongitude] = useState(-121.91599);
-    const [mapLatitude, setMapLatitude] = useState(37.36765);
-    const [mapZoom, setMapZoom] = useState(13);
+    const [mapLatitude, setMapLatitude] = useState(lat);
+    const [mapLongitude, setMapLongitude] = useState(lon);
+    const [mapZoom, setMapZoom] = useState(15);
     const [map, setMap] = useState({});
 
     const increaseZoom = () => {
