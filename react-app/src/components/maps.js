@@ -1,20 +1,62 @@
 import "./maps.css"
 
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 
 import leftArrow from "../assets/left-arrow.png"
 import mapImage2 from "../assets/Map Image 2.png"
 
-function searchDest() {
+import * as tt from "@tomtom-international/web-sdk-maps";
+import "@tomtom-international/web-sdk-maps/dist/maps.css";
 
-}
+const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 
 function Maps() {
     let { dest } = useParams();
+    console.log(useParams());
+
+    const onChange = (event) => {
+
+    }
+
     if (dest) {
         dest = dest.slice(1);
     }
+
+    const MAX_ZOOM = 22;
+    const mapElement = useRef();
+    const [mapLongitude, setMapLongitude] = useState(-121.91599);
+    const [mapLatitude, setMapLatitude] = useState(37.36765);
+    const [mapZoom, setMapZoom] = useState(13);
+    const [map, setMap] = useState({});
+
+    const increaseZoom = () => {
+        if (mapZoom < MAX_ZOOM) {
+            setMapZoom(mapZoom + 1);
+        }
+    };
+
+    const decreaseZoom = () => {
+        if (mapZoom > 1) {
+            setMapZoom(mapZoom - 1);
+        }
+    };
+
+    const updateMap = () => {
+        map.setCenter([parseFloat(mapLongitude), parseFloat(mapLatitude)]);
+        map.setZoom(mapZoom);
+    };
+
+    useEffect(() => {
+        let map = tt.map({
+            key: API_KEY,
+            container: mapElement.current,
+            center: [mapLongitude, mapLatitude],
+            zoom: mapZoom
+        });
+        setMap(map);
+        return () => map.remove();
+    }, []);
 
     return (
         <div className="App">
@@ -31,7 +73,7 @@ function Maps() {
                         <img src={leftArrow} alt="return" />
                     </Link>
                 </div>
-                <div id="map">
+                <div ref={mapElement} id="map" className="map">
                     <img src={mapImage2} alt="map placeholder" />
                 </div>
             </div>
@@ -45,7 +87,7 @@ function Maps() {
                 <div className="search" id="finish">
                     <input type="text"
                         placeholder="Destinasi"
-                        onChange={searchDest}
+                        onChange={onChange}
                         defaultValue={dest ? dest : ""}
                     />
                 </div>
@@ -66,6 +108,9 @@ function Maps() {
                     </div>
                 </div>
             </div>
+            <script>
+
+            </script>
         </div>
     )
 }

@@ -10,6 +10,7 @@ import scanLogo from "./assets/scan.png"
 import Maps from "./components/maps.js"
 
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
+let notClicked = true;
 
 function App() {
     const [lang, setLang] = useState("id");
@@ -17,43 +18,44 @@ function App() {
     const [data, setData] = useState([]);
 
     const onSearch = (searchTerm) => {
-        setDest(searchTerm);
-        // our api to fetch the search result
+        for (let i = 0; i < data.length; i++) {
+            if (searchTerm == data[i].address) {
+                setDest(searchTerm);
+                window.location.href = "/maps/" + data[i].position.lat + "," + data[i].position.lon;
+                notClicked = false;
+            }
+        }
     };
 
     const onChange = (event) => {
         setDest(event.target.value);
         if (event.target.value.length >= 10) {
-            fetch("https://api.tomtom.com/search/2/search/" + event.target.value + ".json?key=" + API_KEY + "&language=en-US")
+            fetch("https://api.tomtom.com/search/2/search/" + event.target.value + ".json?key=" + API_KEY + "&typeahead=true&limit=5&countrySet=ID/IDN&lat=-6.89148&lon=107.6084704&radius=13000&language=id-ID")
                 .then(async response => {
-                    const data = await response.json();
-                    let value = {};
+                    const dataResult = await response.json();
+                    let value = [];
 
-                    for (let i = 0; i < data.results.length; i++) {
-                        value[data.results[i].address.freeformAddress] = data.results[i].position;
+                    for (let i = 0; i < dataResult.results.length; i++) {
+                        value.push({
+                            address: dataResult.results[i].address.freeformAddress.replaceAll("Desa/Dusun/Kelurahan ", ""),
+                            position: dataResult.results[i].position
+                        });
                     }
 
-                    console.log(value);
                     if (!response.ok) {
-                        const error = (data && data.message) || response.statusText;
+                        const error = (dataResult && dataResult.message) || response.statusText;
                         return Promise.reject(error);
                     }
 
+                    notClicked = true;
                     setData(value);
+                    console.log('value', value);
                 })
                 .catch(error => {
                     console.error("There was an error!", error);
                 });
         }
     };
-
-    function keyDown(event) {
-        console.log(event.key + " pressed");
-        if (event.key === "Enter") {
-            //history.push("/maps", {dest: dest});
-            window.location.href = "/maps/:" + dest;
-        }
-    }
 
     return (
         <div className="App">
@@ -83,34 +85,28 @@ function App() {
                             placeholder={lang === "id" ? "Ketik destinasimu disini" : "Type your destination here"}
                             value={dest}
                             onChange={onChange}
-                            onKeyDown={e => keyDown(e)}
                         />
                     </div>
                     <div className="dropdown">
-                        {Object.keys(data)
+                        {notClicked && data
                             .filter((item) => {
                                 const searchTerm = dest;
-                                const fullName = item;
-                                console.log("dest", searchTerm, "\nitem", fullName);
-
-                                return (
-                                    searchTerm &&
-                                    fullName !== searchTerm
-                                );
+                                const fullName = item.address;
+                                return searchTerm && searchTerm !== fullName;
                             })
-                            .slice(0, 5)
                             .map((item) => (
                                 <div
-                                    onClick={() => onSearch(item)}
+                                    onClick={() => onSearch(item.address)}
                                     className="dropdown-row"
-                                    key={item}
+                                    key={item.address}
                                 >
-                                    {item}
+                                    {item.address}
                                 </div>
-                            ))}
+                            ))
+                        }
                     </div>
                 </div>
-            </header>
+            </header >
 
             <br />
 
@@ -149,7 +145,7 @@ function App() {
                     />
                 </nav>
             </footer>
-        </div>
+        </div >
     );
 }
 

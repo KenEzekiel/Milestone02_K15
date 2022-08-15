@@ -1,6 +1,10 @@
 /* body {background-color: #BDF1F9;} */
-body {background-color: white;}
-.home_widgets, nav {
+body {
+    background-color: white;
+}
+
+.home_widgets,
+nav {
     background-color: white;
 }
 
@@ -28,20 +32,65 @@ body {background-color: white;}
     width: 120px;
 }
 
-.search input {
-    background: url(https://cdn-icons-png.flaticon.com/512/875/875623.png) no-repeat scroll;
+.search-container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    background: url(assets/location.png) no-repeat scroll;
     background-color: white;
     background-size: 25px;
     background-position: 3%;
     box-shadow: 3px 4px 2px #aaaaaa;
     margin-top: 10px;
-    margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     width: 400px;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    /* text and search box styling */
+    height: 2rem;
+    padding-left: 50px;
+    border: none;
+    border-radius: 1.625rem;
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 1.625rem;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
+
+.dropdown:empty {
+    border: none;
+}
+
+.dropdown-row {
+    cursor: pointer;
+    text-align: start;
+    margin: 3px 0;
+    background-color: whitesmoke;
+    background-size: 25px;
+    background-position: 3%;
+    box-shadow: 3px 4px 2px #aaaaaa;
+    /* opacity: 0.9; */
+
+    padding: 5px 20px;
+    border: none;
+    border-radius: 1.625rem;
+}
+
+.dropdown-row:hover {
+    opacity: 0.7;
 }
 
 #destInput {
@@ -53,7 +102,8 @@ body {background-color: white;}
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#weather, #pedulilindungi {
+#weather,
+#pedulilindungi {
     position: relative;
     border: none;
     border-radius: 1.625rem;
@@ -125,7 +175,7 @@ body {background-color: white;}
 }
 
 footer nav {
-    background: rgba(216,229,255,255);
+    background: rgba(216, 229, 255, 255);
     border: none;
     box-shadow: 3px 4px 2px #aaaaaa;
     border-radius: 1.625rem;
@@ -141,7 +191,7 @@ footer nav img {
     height: 5%;
 }
 
-.middle{
+.middle {
     box-shadow: 3px 4px 2px #aaaaaa;
     border-radius: 10%;
 }
