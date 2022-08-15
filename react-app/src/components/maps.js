@@ -6,6 +6,10 @@ import { Link, useParams } from 'react-router-dom'
 import leftArrow from "../assets/left-arrow.png"
 import mapImage2 from "../assets/Map Image 2.png"
 
+function searchDest() {
+
+}
+
 function Maps() {
     let { dest } = useParams();
     if (dest) {
@@ -14,11 +18,11 @@ function Maps() {
 
     return (
         <div className='App'>
-            <div class="background">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
+            <div className="background">
+                <div className="circle1"></div>
+                <div className="circle2"></div>
+                <div className="circle3"></div>
+                <div className="circle4"></div>
             </div>
 
             <div id="container_map">
@@ -35,27 +39,28 @@ function Maps() {
             <br />
 
             <div>
-                <div class="search" id="start">
+                <div className="search" id="start">
                     <input type="text" placeholder="Lokasi Awal" />
                 </div>
-                <div class="search" id="finish">
+                <div className="search" id="finish">
                     <input type="text"
                         placeholder="Destinasi"
-                        value={dest ? dest : ''}
+                        onChange={searchDest}
+                        defaultValue={dest ? dest : ''}
                     />
                 </div>
             </div>
 
             <br />
             <div>
-                <div class="bus_details" id="est_time">
-                    <div class="details_text">
+                <div className="bus_details" id="est_time">
+                    <div className="details_text">
                         <p><strong>Estimasi Kedatangan</strong></p>
                         <p>x min (Y km)</p>
                     </div>
                 </div>
-                <div class="bus_details" id="route_code">
-                    <div class="details_text">
+                <div className="bus_details" id="route_code">
+                    <div className="details_text">
                         <p><strong>Kode Angkutan</strong></p>
                         <p>Caringin-Sadang Serang - 2341</p>
                     </div>

@@ -3,16 +3,21 @@ body {
     background-color: white;
 }
 
-.search input {
+.search-container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.search-container input {
     background: url(../assets/location.png) no-repeat scroll;
     background-color: white;
     background-size: 25px;
     background-position: 3%;
     box-shadow: 3px 4px 2px #aaaaaa;
     margin-top: 10px;
-    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     width: 400px;
     display: flex;
     flex-direction: row;
@@ -27,6 +32,38 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 1.625rem;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
+
+.dropdown:empty {
+    border: none;
+}
+
+.dropdown-row {
+    cursor: pointer;
+    text-align: start;
+    margin: 3px 0;
+    background-color: whitesmoke;
+    background-size: 25px;
+    background-position: 3%;
+    box-shadow: 3px 4px 2px #aaaaaa;
+    /* opacity: 0.9; */
+
+    padding: 5px 20px;
+    border: none;
+    border-radius: 1.625rem;
+}
+
+.dropdown-row:hover {
+    opacity: 0.7;
+}
+
 .bus_details {
     box-shadow: 3px 4px 2px #aaa;
     margin: 10px auto 20px auto;
@@ -34,11 +71,11 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border:none;
+    border: none;
     border-radius: 1.625rem;
 }
 
-.details_text{
+.details_text {
     padding-left: 100px;
     border: none;
     border-radius: 1.625rem;
@@ -46,62 +83,56 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#est_time{
+#est_time {
     background: url(../assets/stopwatch.png) no-repeat scroll;
     background-color: #fff;
 }
 
-#route_code{
+#route_code {
     background: url(../assets/qr.png) no-repeat scroll;
     background-color: #fff;
 }
 
-#est_time, #route_code{
+#est_time,
+#route_code {
     background-size: 50px;
     background-position: 5%;
 }
-
-
 
 #container_map {
     position: relative;
     border: none;
     border-radius: 1.625rem;
     width: 500px;
-    background-color: rgba(255,255,255,50%);
+    background-color: rgba(255, 255, 255, 50%);
     box-shadow: 3px 4px 2px #aaaaaa;
     padding: 25px;
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
-#map{
+#map {
     align-self: center;
-    align-content: center ;
+    align-content: center;
 }
 
 
-#button_return{
+#button_return {
     display: flex;
     margin-bottom: -20px;
     background-color: white;
-    border-radius:25px;
-    width:40px;
-    height:40px;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
     box-shadow: 1px 3px 2px #aaaaaa;
 
 }
 
-#button_return img{
-    width:25px;
-    height:25px;
-    margin:auto;
+#button_return img {
+    width: 25px;
+    height: 25px;
+    margin: auto;
 }
-
-
-
-
-

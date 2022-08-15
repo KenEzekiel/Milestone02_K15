@@ -2,25 +2,56 @@
 import './styles.css';
 import './background.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import settingLogo from './assets/setting.png'
 import scanLogo from './assets/scan.png'
 import Maps from './components/maps.js'
 
-import { useState } from 'react';
+const API_KEY = 'GW4pu0GIxAKW4aUktkhMmIfLblBEESWI';
 
 function App() {
     const [lang, setLang] = useState('id');
     const [dest, setDest] = useState('');
+    const [data, setData] = useState([]);
+
+    const onSearch = (searchTerm) => {
+        setDest(searchTerm);
+        // our api to fetch the search result
+    };
+
+    const onChange = (event) => {
+        setDest(event.target.value);
+        if (event.target.value.length >= 10) {
+            fetch('https://api.tomtom.com/search/2/search/' + event.target.value + '.json?key=' + API_KEY + '&language=en-US')
+                .then(async response => {
+                    const data = await response.json();
+                    let value = {};
+
+                    for (let i = 0; i < data.results.length; i++) {
+                        value[data.results[i].address.freeformAddress] = data.results[i].position;
+                    }
+
+                    console.log(value);
+                    if (!response.ok) {
+                        const error = (data && data.message) || response.statusText;
+                        return Promise.reject(error);
+                    }
+
+                    setData(value);
+                })
+                .catch(error => {
+                    console.error("There was an error!", error);
+                });
+        }
+    };
 
     function keyDown(event) {
         console.log(event.key + ' pressed');
         if (event.key === 'Enter') {
             //history.push('/maps', {dest: dest});
             window.location.href = '/maps/:' + dest;
-
         }
     }
 
@@ -45,14 +76,38 @@ function App() {
 
                 <br />
 
-                <div className="search">
-                    <input
-                        id="destInput" type="text" name="destInput"
-                        placeholder={lang === 'id' ? "Ketik destinasimu disini" : "Type your destination here"}
-                        value={dest}
-                        onInput={e => setDest(e.target.value)}
-                        onKeyDown={e => keyDown(e)}
-                    />
+                <div className="search-container">
+                    <div className="search-inner">
+                        <input
+                            id="destInput" type="text" name="destInput"
+                            placeholder={lang === 'id' ? "Ketik destinasimu disini" : "Type your destination here"}
+                            value={dest}
+                            onChange={onChange}
+                            onKeyDown={e => keyDown(e)}
+                        />
+                    </div>
+                    <div className="dropdown">
+                        {Object.keys(data)
+                            .filter((item) => {
+                                const searchTerm = dest;
+                                const fullName = item;
+                                console.log('dest', searchTerm, '\nitem', fullName);
+
+                                return (
+                                    searchTerm &&
+                                    fullName !== searchTerm
+                                );
+                            })
+                            .map((item) => (
+                                <div
+                                    onClick={() => onSearch(item)}
+                                    className="dropdown-row"
+                                    key={item}
+                                >
+                                    {item}
+                                </div>
+                            ))}
+                    </div>
                 </div>
             </header>
 
@@ -79,7 +134,6 @@ function App() {
                 <nav>
                     <img className="left2" src={settingLogo} alt="Settings" />
                     <img className="left1" src="https://cdn-icons-png.flaticon.com/512/189/189665.png" alt="Help" />
-                    {/* <img className="middle" src="https://cdn-icons.flaticon.com/png/512/4480/premium/4480405.png?token=exp=1660456745~hmac=62c88fc5cd2fbfcf795bab27a0077177" alt="Scan" /> */}
                     <img className="middle" src={scanLogo} alt="Scan" />
                     <img
                         className="right1"
