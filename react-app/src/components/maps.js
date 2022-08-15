@@ -1,7 +1,7 @@
-import './maps.css'
+import "./maps.css"
 
-import React from 'react';
-import { Link, useParams } from 'react-router-dom'
+import React from "react";
+import { Link, useParams } from "react-router-dom"
 
 import leftArrow from "../assets/left-arrow.png"
 import mapImage2 from "../assets/Map Image 2.png"
@@ -17,7 +17,7 @@ function Maps() {
     }
 
     return (
-        <div className='App'>
+        <div className="App">
             <div className="background">
                 <div className="circle1"></div>
                 <div className="circle2"></div>
@@ -27,7 +27,7 @@ function Maps() {
 
             <div id="container_map">
                 <div>
-                    <Link to='/' id="button_return">
+                    <Link to="/" id="button_return">
                         <img src={leftArrow} alt="return" />
                     </Link>
                 </div>
@@ -46,7 +46,7 @@ function Maps() {
                     <input type="text"
                         placeholder="Destinasi"
                         onChange={searchDest}
-                        defaultValue={dest ? dest : ''}
+                        defaultValue={dest ? dest : ""}
                     />
                 </div>
             </div>
