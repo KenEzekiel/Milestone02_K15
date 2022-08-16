@@ -20,11 +20,9 @@ function App() {
     const [coor, setCoor] = useState([]);
 
     function keyDown(event) {
-        console.log(event);
-        window.alert(event.key, event.keyCode, event.code);
-        // if (event.key === 'Enter' && coor.length != 0) {
-        //     window.location.href = "/maps/" + dest + "/" + coor[0] + "/" + coor[1];
-        // }
+        if ((event.code === 'Enter' || event.key === 'Enter' || event.keyCode === 13 || event.which === 13) && coor.length != 0) {
+            window.location.href = "/maps/" + dest + "/" + coor[0] + "/" + coor[1];
+        }
     }
 
     const onSearch = (searchTerm) => {
