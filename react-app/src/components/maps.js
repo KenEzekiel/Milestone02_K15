@@ -172,9 +172,7 @@ function Maps() {
                         <img src={leftArrow} alt="return" />
                     </Link>
                 </div>
-                <div ref={mapElement} id="map" className="map">
-                    <img src={mapImage2} alt="map placeholder" />
-                </div>
+                <div ref={mapElement} id="map" className="map" />
             </div>
 
             <br />
