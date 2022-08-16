@@ -129,6 +129,7 @@ function MapsFinish() {
                         placeholder="Lokasi Awal"
                         value={dest1}
                         readOnly
+                        disabled
                     />
                 </div>
                 <div className="search" id="finish">
@@ -136,6 +137,7 @@ function MapsFinish() {
                         placeholder="Destinasi"
                         value={dest2}
                         readOnly
+                        disabled
                     />
                 </div>
             </div>
