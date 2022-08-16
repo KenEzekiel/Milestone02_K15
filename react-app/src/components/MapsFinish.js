@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 
 import leftArrow from "../assets/left-arrow.png"
-import mapImage2 from "../assets/Map Image 2.png"
+import mapImage from "../assets/map.png"
 
 import * as tt from "@tomtom-international/web-sdk-maps";
 import * as tts from "@tomtom-international/web-sdk-services";
@@ -117,7 +117,7 @@ function MapsFinish() {
                     </Link>
                 </div>
                 <div ref={mapElement} id="map" className="map">
-                    <img src={mapImage2} alt="map placeholder" />
+                    <img src={mapImage} alt="map placeholder" />
                 </div>
             </div>
 

@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 
 import leftArrow from "../assets/left-arrow.png"
-import mapImage2 from "../assets/Map Image 2.png"
+import mapImage from "../assets/map.png"
 
 import * as tt from "@tomtom-international/web-sdk-maps";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
@@ -172,7 +172,9 @@ function Maps() {
                         <img src={leftArrow} alt="return" />
                     </Link>
                 </div>
-                <div ref={mapElement} id="map" className="map" />
+                <div ref={mapElement} id="map" className="map">
+                    <img src={mapImage} alt="map placeholder" />
+                </div>
             </div>
 
             <br />
