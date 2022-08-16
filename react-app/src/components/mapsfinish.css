@@ -5,7 +5,7 @@ body {
 
 .search input {
     background: url(../assets/location.png) no-repeat scroll;
-    background-color: white;
+    background-color: whitesmoke;
     background-size: 25px;
     background-position: 3%;
     box-shadow: 3px 4px 2px #aaaaaa;

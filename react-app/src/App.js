@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import settingLogo from "./assets/setting.png"
 import scanLogo from "./assets/scan.png"
 import Maps from "./components/Maps.js"
+import MapsFinish from "./components/MapsFinish.js"
 
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 let notClicked = true;
@@ -16,15 +17,19 @@ function App() {
     const [lang, setLang] = useState("id");
     const [dest, setDest] = useState("");
     const [data, setData] = useState([]);
-    let lat, lon;
+    const [coor, setCoor] = useState([]);
+
+    function keyDown(event) {
+        if (event.key === 'Enter' && coor.length != 0) {
+            window.location.href = "/maps/" + dest + "/" + coor[0] + "/" + coor[1];
+        }
+    }
 
     const onSearch = (searchTerm) => {
         for (let i = 0; i < data.length; i++) {
             if (searchTerm === data[i].address) {
                 setDest(searchTerm);
-                lat = data[i].lat;
-                lon = data[i].lon;
-                window.location.href = "/maps/" + searchTerm + "/" + data[i].position.lat + "/" + data[i].position.lon;
+                setCoor([data[i].position.lon, data[i].position.lat]);
                 notClicked = false;
             }
         }
@@ -52,7 +57,6 @@ function App() {
 
                     notClicked = true;
                     setData(value);
-                    console.log('value', value);
                 })
                 .catch(error => {
                     console.error("There was an error!", error);
@@ -91,6 +95,7 @@ function App() {
                                         placeholder={lang === "id" ? "Ketik destinasimu disini" : "Type your destination here"}
                                         value={dest}
                                         onChange={onChange}
+                                        onKeyDown={e => keyDown(e)}
                                     />
                                 </div>
                                 <div className="dropdown">
@@ -153,7 +158,8 @@ function App() {
                         </footer>
                     </div >
                 } />
-                <Route path="maps/:dest/:lat/:lon" element={<Maps />} />
+                <Route path="maps/:dest/:lon/:lat" element={<Maps />} />
+                <Route path="finish/:dest1/:lon1/:lat1/:dest2/:lon2/:lat2/:zoom" element={<MapsFinish />} />
             </Routes>
         </BrowserRouter>
     );

@@ -12,13 +12,22 @@ import "@tomtom-international/web-sdk-maps/dist/maps.css";
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 let notClicked = true;
 let pickFromMap = true;
-let marker1;
+let marker1, popup1;
 
 function Maps() {
     let { dest, lat, lon } = useParams();
+    const mapElement = useRef();
     const [data, setData] = useState([]);
     const [coor, setCoor] = useState([]);
     const [strt, setStrt] = useState("");
+    const [map, setMap] = useState({});
+    const [mapZoom, setMapZoom] = useState(15);
+
+    function keyDown(event) {
+        if (event.key === 'Enter' && coor.length != 0) {
+            window.location.href = "/finish/" + strt + "/" + coor[0] + "/" + coor[1] + "/" + dest + "/" + lon + "/" + lat + "/" + mapZoom;
+        }
+    }
 
     const onSearch = (searchTerm) => {
         for (let i = 0; i < data.length; i++) {
@@ -27,9 +36,32 @@ function Maps() {
                 setCoor([data[i].position.lon, data[i].position.lat]);
                 notClicked = false;
                 marker1.remove();
+
                 marker1 = new tt.Marker({
-                    draggable: true
+                    draggable: false
                 }).setLngLat([data[i].position.lon, data[i].position.lat]).addTo(map);
+                popup1.setHTML(data[i].position.lon.toString().slice(0, 9) + ", " + data[i].position.lat.toString().slice(0, 8));
+                popup1.setLngLat([data[i].position.lon, data[i].position.lat]);
+                marker1.setPopup(popup1);
+                marker1.togglePopup();
+
+                let centerAvrg = [(parseFloat(lon) + parseFloat(data[i].position.lon)) / 2, (parseFloat(lat) + parseFloat(data[i].position.lat)) / 2];
+                map.setCenter(centerAvrg);
+                let strLine = Math.sqrt(((parseFloat(lon) - parseFloat(data[i].position.lon)) ** 2) + ((parseFloat(lat) - parseFloat(data[i].position.lat)) ** 2));
+                if (strLine < 0.006) {
+                    setMapZoom(15);
+                } else if (strLine < 0.02) {
+                    setMapZoom(14);
+                } else if (strLine < 0.06) {
+                    setMapZoom(13);
+                } else if (strLine < 0.2) {
+                    setMapZoom(12);
+                } else if (strLine < 0.6) {
+                    setMapZoom(11);
+                } else {
+                    setMapZoom(10);
+                }
+                map.setZoom(mapZoom);
             }
         }
     };
@@ -84,39 +116,30 @@ function Maps() {
             }
         }
     }
-    const mapElement = useRef();
-    const [map, setMap] = useState({});
 
     var center1 = coor.length === 2 ? coor : [parseFloat(lon) + 0.0005, parseFloat(lat) + 0.0005];
-    console.log(center1);
     var center2 = [lon, lat];
     useEffect(() => {
         let map = tt.map({
             key: API_KEY,
             container: mapElement.current,
             center: center2,
-            zoom: 15
+            zoom: mapZoom
         });
         setMap(map);
 
-        var popup1 = new tt.Popup({
+        popup1 = new tt.Popup({
             offset: 35
         });
         marker1 = new tt.Marker({
-            draggable: true
+            draggable: false
         }).setLngLat(center1).addTo(map);
 
-        function onDragEnd() {
-            var lngLat1 = marker1.getLngLat();
-
-            popup1.setHTML(lngLat1.lng.toString().slice(0, 9) + ", " + lngLat1.lat.toString().slice(0, 8));
-            popup1.setLngLat(lngLat1);
-            marker1.setPopup(popup1);
-            marker1.togglePopup();
-            onChange([parseFloat(lngLat1.lng.toString().slice(0, 9)), parseFloat(lngLat1.lat.toString().slice(0, 8))]);
-        }
-
-        marker1.on('dragend', onDragEnd);
+        var lngLat1 = marker1.getLngLat();
+        popup1.setHTML(lngLat1.lng.toString().slice(0, 9) + ", " + lngLat1.lat.toString().slice(0, 8));
+        popup1.setLngLat(lngLat1);
+        marker1.setPopup(popup1);
+        marker1.togglePopup();
 
         var popup2 = new tt.Popup({
             offset: 35
@@ -161,7 +184,9 @@ function Maps() {
                     <input type="text"
                         placeholder="Lokasi Awal"
                         onChange={onChange}
-                        value={strt} />
+                        value={strt}
+                        onKeyDown={e => keyDown(e)}
+                    />
                 </div>
                 <div className="dropdown">
                     {!pickFromMap && notClicked && data

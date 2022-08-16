@@ -1,4 +1,4 @@
-import "./maps.css"
+import "./mapsfinish.css"
 
 import React, { useRef, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
@@ -7,58 +7,96 @@ import leftArrow from "../assets/left-arrow.png"
 import mapImage2 from "../assets/Map Image 2.png"
 
 import * as tt from "@tomtom-international/web-sdk-maps";
+import * as tts from "@tomtom-international/web-sdk-services";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 
 function MapsFinish() {
-    let { dest, lat, lon } = useParams();
+    let { dest1, lon1, lat1, dest2, lon2, lat2, zoom } = useParams();
+    let center = [(parseFloat(lon1) + parseFloat(lon2)) / 2, (parseFloat(lat1) + parseFloat(lat2)) / 2];
 
-    const onChange = (event) => {
-
-    }
-
-    const MAX_ZOOM = 22;
     const mapElement = useRef();
-    const [mapLatitude, setMapLatitude] = useState(lat);
-    const [mapLongitude, setMapLongitude] = useState(lon);
-    const [mapZoom, setMapZoom] = useState(15);
-    const [map, setMap] = useState({});
+    let [timeTravel, setTimeTravel] = useState();
+    let [distanceTravel, setDistanceTravel] = useState();
 
-    const updateMap = () => {
-        map.setCenter([parseFloat(mapLongitude), parseFloat(mapLatitude)]);
-        map.setZoom(mapZoom);
-    };
+    fetch("https://api.tomtom.com/routing/1/calculateRoute/" + lat1 + "," + lon1 + ":" + lat2 + "," + lon2 + "/json?instructionsType=text&language=id-ID&key=" + API_KEY)
+        .then(async response => {
+            const dataResult = await response.json();
 
-    var center = [mapLongitude, mapLatitude];
+            if (!response.ok) {
+                const error = (dataResult && dataResult.message) || response.statusText;
+                return Promise.reject(error);
+            }
+
+            setTimeTravel(Math.ceil(dataResult.routes[0].summary.travelTimeInSeconds / 60));
+            setDistanceTravel(dataResult.routes[0].summary.lengthInMeters);
+        })
+        .catch(error => {
+            console.error("There was an error!", error);
+        });
+
     useEffect(() => {
+        let center1 = [lon1, lat1];
+        let center2 = [lon2, lat2];
+
         let map = tt.map({
             key: API_KEY,
             container: mapElement.current,
             center: center,
-            zoom: mapZoom
+            zoom: zoom
         });
-        setMap(map);
 
-        var popup = new tt.Popup({
-            offset: 30
+        let popup1 = new tt.Popup({
+            offset: 35
         });
-        var marker = new tt.Marker({
-            draggable: true
-        }).setLngLat(center).addTo(map);
+        let marker1 = new tt.Marker({
+            draggable: false
+        }).setLngLat(center1).addTo(map);
 
-        var lngLat = new tt.LngLat.convert(center);
+        var lngLat1 = marker1.getLngLat();
+        popup1.setHTML(lngLat1.lng.toString().slice(0, 9) + ", " + lngLat1.lat.toString().slice(0, 8));
+        popup1.setLngLat(lngLat1);
+        marker1.setPopup(popup1);
+        marker1.togglePopup();
 
-        function onDragEnd() {
-            lngLat = marker.getLngLat();
+        var popup2 = new tt.Popup({
+            offset: 35
+        });
+        var marker2 = new tt.Marker({
+            draggable: false
+        }).setLngLat(center2).addTo(map);
 
-            popup.setHTML(lngLat.lng.toString().slice(0, 9) + ", " + lngLat.lat.toString().slice(0, 8));
-            popup.setLngLat(lngLat);
-            marker.setPopup(popup);
-            marker.togglePopup();
-        }
+        var lngLat2 = marker2.getLngLat();
+        popup2.setHTML(lngLat2.lng.toString().slice(0, 9) + ", " + lngLat2.lat.toString().slice(0, 8));
+        popup2.setLngLat(lngLat2);
+        marker2.setPopup(popup2);
+        marker2.togglePopup();
 
-        marker.on('dragend', onDragEnd);
+        tts.services.calculateRoute({
+            key: API_KEY,
+            locations: lon1 + "," + lat1 + ":" + lon2 + "," + lat2
+        })
+            .then(function (response) {
+                var geojson = response.toGeoJson();
+                map.addLayer({
+                    'id': 'route',
+                    'type': 'line',
+                    'source': {
+                        'type': 'geojson',
+                        'data': geojson
+                    },
+                    'paint': {
+                        'line-color': '#00d7ff',
+                        'line-width': 8
+                    }
+                });
+                var bounds = new tt.LngLatBounds();
+                geojson.features[0].geometry.coordinates.forEach(function (point) {
+                    bounds.extend(tt.LngLat.convert(point));
+                });
+                map.fitBounds(bounds, { padding: 20 });
+            });
 
         return () => map.remove();
     }, []);
@@ -74,7 +112,7 @@ function MapsFinish() {
 
             <div id="container_map">
                 <div>
-                    <Link to="/" id="button_return">
+                    <Link to="/maps/:dest2/:lon2/:lat2" id="button_return">
                         <img src={leftArrow} alt="return" />
                     </Link>
                 </div>
@@ -89,13 +127,15 @@ function MapsFinish() {
                 <div className="search" id="start">
                     <input type="text"
                         placeholder="Lokasi Awal"
-                        onChange={onChange} />
+                        value={dest1}
+                        readOnly
+                    />
                 </div>
                 <div className="search" id="finish">
                     <input type="text"
                         placeholder="Destinasi"
-                        onChange={onChange}
-                        defaultValue={dest ? dest : ""}
+                        value={dest2}
+                        readOnly
                     />
                 </div>
             </div>
@@ -105,7 +145,7 @@ function MapsFinish() {
                 <div className="bus_details" id="est_time">
                     <div className="details_text">
                         <p><strong>Estimasi Kedatangan</strong></p>
-                        <p>x min (Y km)</p>
+                        <p>{timeTravel} min ({distanceTravel} m)</p>
                     </div>
                 </div>
                 <div className="bus_details" id="route_code">
