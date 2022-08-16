@@ -112,7 +112,7 @@ function MapsFinish() {
 
             <div id="container_map">
                 <div>
-                    <Link to="/maps/:dest2/:lon2/:lat2" id="button_return">
+                    <Link to={"/maps/" + dest2 + "/" + lon2 + "/" + lat2} id="button_return">
                         <img src={leftArrow} alt="return" />
                     </Link>
                 </div>
@@ -155,7 +155,7 @@ function MapsFinish() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
