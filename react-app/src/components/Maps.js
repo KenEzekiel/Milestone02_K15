@@ -211,6 +211,7 @@ function Maps() {
                         placeholder="Destinasi"
                         value={dest ? dest : ""}
                         readOnly="readonly"
+                        disabled
                     />
                 </div>
             </div>
