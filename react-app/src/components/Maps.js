@@ -25,7 +25,7 @@ function Maps() {
 
     function keyDown(event) {
         if ((event.code === 'Enter' || event.key === 'Enter' || event.keyCode === 13 || event.which === 13) && coor.length != 0) {
-            window.location.href = "/maps/" + dest + "/" + coor[0] + "/" + coor[1];
+            window.location.href = "/finish/" + strt + "/" + coor[0] + "/" + coor[1] + "/" + dest + "/" + lon + "/" + lat + "/" + mapZoom;
         }
     }
 
