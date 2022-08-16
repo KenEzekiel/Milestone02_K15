@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import settingLogo from "./assets/setting.png"
 import scanLogo from "./assets/scan.png"
-import Maps from "./components/Maps.js"
+import Maps from "./components/maps.js"
 
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 let notClicked = true;
