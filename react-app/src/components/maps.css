@@ -85,6 +85,8 @@ body {
 #map {
     align-self: center;
     align-content: center;
+    height: 489px;
+    width: 332px;
 }
 
 #button_return {
