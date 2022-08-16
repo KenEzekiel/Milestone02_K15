@@ -29,7 +29,7 @@ function Maps() {
                 marker1.remove();
                 marker1 = new tt.Marker({
                     draggable: true
-                }).setLngLat([data[i].posotion.lon, data[i].position.lat]).addTo(map);
+                }).setLngLat([data[i].position.lon, data[i].position.lat]).addTo(map);
             }
         }
     };
@@ -48,7 +48,7 @@ function Maps() {
                     }
 
                     notClicked = true;
-                    setStrt(dataResult.addresses[0].address.freeformAddress.replaceAll("Desa/Dusun/Kelurahan ", ""));
+                    setStrt(dataResult.addresses[0].address.freeformAddress.replaceAll("Desa/Dusun/Kelurahan ", "").replace("/Kav.", ""));
                 })
                 .catch(error => {
                     console.error("There was an error!", error);

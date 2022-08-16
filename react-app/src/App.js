@@ -40,7 +40,7 @@ function App() {
 
                     for (let i = 0; i < dataResult.results.length; i++) {
                         value.push({
-                            address: dataResult.results[i].address.freeformAddress.replaceAll("Desa/Dusun/Kelurahan ", ""),
+                            address: dataResult.results[i].address.freeformAddress.replaceAll("Desa/Dusun/Kelurahan ", "").replace("/Kav.", ""),
                             position: dataResult.results[i].position
                         });
                     }
