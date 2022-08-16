@@ -7,12 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import settingLogo from "./assets/setting.png"
 import scanLogo from "./assets/scan.png"
-<<<<<<< HEAD
 import Maps from "./components/Maps.js"
 import MapsFinish from "./components/MapsFinish.js"
-=======
-import Maps from "./components/maps.js"
->>>>>>> 588975db57b38752a3a252a81d0e0c28ed7007c5
 
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 let notClicked = true;
