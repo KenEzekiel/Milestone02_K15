@@ -29,7 +29,7 @@ Solusinya adalah dengan membuat sistem yang lebih teratur dalam bentuk sebuah we
 Ketika user memasuki website dan masuk ke halaman depan web, user akan dianjurkan untuk mengetik lokasi awal dan destinasi tujuan. Lokasi awal akan dihubungkan dengan perhentian angkot terdekat untuk bantu memandu user. Dari situ, website akan mencari angkot tertentu dengan jalur yang akan dilalui sesuai dengan tujuan destinasi user. 
 
 # Cara Menggunakan Web
-
+Link : https://milestone02-k15.vercel.app/
 Cara menggunakan web ini adalah sebagai berikut :
 1. Mulai 
 2. User memilih lokasi yang dituju
