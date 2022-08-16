@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import settingLogo from "./assets/setting.png"
 import scanLogo from "./assets/scan.png"
-import Maps from "./components/maps.js"
+import Maps from "./components/Maps.js"
 
 const API_KEY = "GW4pu0GIxAKW4aUktkhMmIfLblBEESWI";
 let notClicked = true;
@@ -20,7 +20,7 @@ function App() {
 
     const onSearch = (searchTerm) => {
         for (let i = 0; i < data.length; i++) {
-            if (searchTerm == data[i].address) {
+            if (searchTerm === data[i].address) {
                 setDest(searchTerm);
                 lat = data[i].lat;
                 lon = data[i].lon;
@@ -32,7 +32,7 @@ function App() {
 
     const onChange = (event) => {
         setDest(event.target.value);
-        if (event.target.value.length >= 10) {
+        if (event.target.value.length >= 5) {
             fetch("https://api.tomtom.com/search/2/search/" + event.target.value + ".json?key=" + API_KEY + "&typeahead=true&limit=5&countrySet=ID/IDN&lat=-6.89148&lon=107.6084704&radius=13000&language=id-ID")
                 .then(async response => {
                     const dataResult = await response.json();
